@@ -13,7 +13,6 @@ defmodule AdventOfCode.Day02 do
     |> Enum.map(&extract_game_id(&1))
     |> Enum.map(&find_largest_color_count(&1))
     |> Enum.reduce(0, &find_possible_games(&1, &2, cubes))
-    |> Enum.uniq()
   end
 
   def part2(_args) do
@@ -64,9 +63,7 @@ defmodule AdventOfCode.Day02 do
       |> List.first()
 
     grabs = entry[key]
-
     max_values = Enum.reduce(grabs, %{red: 0, green: 0, blue: 0}, &max_colors(&1, &2))
-
     %{key => max_values}
   end
 
